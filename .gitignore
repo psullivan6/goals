@@ -6,7 +6,6 @@ npm-debug.log
 
 # Final compiled directory + files
 release
-_source/css/styles.css
 
 # Environment Variables
 .env
@@ -14,3 +13,5 @@ _source/css/styles.css
 # Misc.
 .DS_Store
 .sass-cache
+
+_source/css/styles.css
