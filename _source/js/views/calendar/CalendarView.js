@@ -24,13 +24,28 @@ define([
 
       var streaks = [
         {
-          end: '2016-01-08',
-          start: '2016-01-04',
-          title: 'Monday to Friday Event'
-        }, {
-          end: '2016-01-20',
+          start: '2015-12-28',
+          end:   '2016-01-06',
+          title: 'Monday to Friday Event',
+          goal:  'goal-one'
+        },
+        {
           start: '2016-01-15',
-          title: 'Another Long Event'
+          end:   '2016-01-20',
+          title: 'Another Long Event',
+          goal:  'goal-two'
+        },
+        {
+          start: '2016-01-18',
+          end:   '2016-01-24',
+          title: 'Another Long Event',
+          goal:  'goal-one'
+        },
+        {
+          start: '2016-01-17',
+          end:   '2016-01-21',
+          title: 'Another Long Event',
+          goal:  'goal-three'
         }
       ];
 

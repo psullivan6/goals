@@ -4,8 +4,9 @@ bower_components
 libs
 npm-debug.log
 
-# Final compiled directory
+# Final compiled directory + files
 /release
+/_source/css/styles.css
 
 # Environment Variables
 .env

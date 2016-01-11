@@ -12,9 +12,9 @@
 	</header>
 
 	<article class="days">
-		<% for (var i = 0, collectionLength = days.length; i < collectionLength; i++) { %>
+		<% for (var i = 0, collectionLength = days.length; i < collectionLength; i++) {
 
-			<% if (days[i].classes.search('event') >= 0){
+			if (days[i].classes.search('event') >= 0){
 				if ((days[i - 1].classes.search('event') >= 0) && (days[i + 1].classes.search('event') >= 0)) {
 					days[i].classes = days[i].classes.concat(' streak-surrounded');
 				} else if (days[i - 1].classes.search('event') >= 0){
@@ -26,7 +26,47 @@
 				}
 			} %>
 
-			<p class="<%= days[i].classes %>"><%= days[i].day %></p>
-    <% }; %>
+			<p class="<%= days[i].classes %>">
+				<span><%= days[i].day %></span>
+				<% if (days[i].properties.goals.length > 0){
+
+					var goalsArrays = {
+						previous: days[i - 1].properties.goals,
+						current: days[i].properties.goals,
+						next: days[i + 1].properties.goals,
+					};
+
+					for (var goalsArraysIndex = 0, goalLength = goalsArrays.current.length; goalsArraysIndex < goalLength; goalsArraysIndex++) {
+						var currentGoal = goalsArrays.current[goalsArraysIndex];
+
+						if (goalsArrays.previous.indexOf(currentGoal) >= 0 && goalsArrays.next.indexOf(currentGoal) >= 0){
+							console.log(days[i].day, 'SURROUNDED', currentGoal);
+							%>
+								<span class="goal streak-surrounded <%= currentGoal %>"><%= currentGoal %></span>
+							<%
+						} else if (goalsArrays.previous.indexOf(currentGoal) >= 0) {
+							console.log(days[i].day, 'END', currentGoal);
+							%>
+								<span class="goal streak-end <%= currentGoal %>"><%= currentGoal %></span>
+							<%
+						} else if (goalsArrays.next.indexOf(currentGoal) >= 0){
+							console.log(days[i].day, 'START', currentGoal);
+							%>
+								<span class="goal streak-start <%= currentGoal %>"><%= currentGoal %></span>
+							<%
+						} else {
+							console.log(days[i].day, 'SOLO', currentGoal);
+							%>
+								<span class="goal streak-solo <%= currentGoal %>"><%= currentGoal %></span>
+							<%
+						}
+
+
+
+						%>
+					<% } %>
+				<% } %>
+			</p>
+    <% } %>
 	</article>
 </section>

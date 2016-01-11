@@ -1,7 +1,7 @@
 require.config({
   paths: {
     backbone    : 'libs/backbone/backbone',
-    clndr       : 'libs/clndr/clndr.min',
+    clndr       : 'libs/clndr/src/clndr',
     jquery      : 'libs/jquery/dist/jquery.min',
     Modernizr   : 'libs/Modernizr/modernizr.custom',
     moment      : 'libs/moment/moment',

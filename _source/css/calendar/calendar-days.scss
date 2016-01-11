@@ -1,6 +1,9 @@
 #calendar .days{
   @extend .clearfix;
 
+  // ###########################################################################
+  // Day
+  // ###########################################################################
   .day{
     z-index: 1;
     position: relative;
@@ -8,61 +11,64 @@
     float: left;
     width: percentage(1 / 7);
     margin: 0;
-    padding: ($gutter / 2) 0;
+    padding: ($gutter * 0.5) 0;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     color: rgba(white, 0.9);
 
     // =========================================================================
-    // Adjacent months + past dates
+    // Day > Week Row clear
+    // =========================================================================
+    &.calendar-dow-0{ clear: left; }
+
+    // =========================================================================
+    // Day > Importance Coloring
     // =========================================================================
     &.past{ color: rgba(white, 0.6); }
     &.last-month{ color: rgba(white, 0.15); }
     &.next-month{ color: rgba(white, 0.3); }
 
     // =========================================================================
-    // Streak / Event Styling
+    // Goal Streak > Start - End styling
     // =========================================================================
-    &.event{
-      color: white;
+    .goal{
+      z-index: -1;
+      overflow: hidden;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: $gutter * 1.5;
+      height: 8px;
+      margin-left: ($gutter * -0.5);
+      border-radius: $gutter;
+      text-indent: -300%;
 
-      &:before{
-        z-index: -1;
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: $gutter * 1.5;
-        height: 6px;
-        margin: 0 0 0 ($gutter * -0.75);
-        border-radius: $gutter;
-        background-color: lighten($red, 3%);
+      &.streak-start,
+      &.streak-end{
+        width: calc(50% + #{$gutter * 0.5});
       }
+      &.streak-start{ border-radius: $gutter 0 0 $gutter; }
+      &.streak-end{   border-radius: 0 $gutter $gutter 0; }
 
-      &.streak-start:before,
-      &.streak-end:before{
-        width: calc(50% + #{$gutter * 0.75});
-      }
-      &.streak-start:before{
-        border-radius: $gutter 0 0 $gutter;
-      }
-      &.streak-end:before{
+      &.streak-end,
+      &.streak-surrounded{
         left: 0;
-        margin-left: 0;
-        border-radius: 0 $gutter $gutter 0;
+        margin-left: 0
       }
 
-      &.streak-surrounded:before{
-        left: 0;
+      &.streak-surrounded{
         width: 100%;
-        margin-left: 0;
         border-radius: 0;
       }
     }
-  }
 
-  .calendar-dow-0{
-    clear: left;
+    // =========================================================================
+    // Goal Streak > Coloring
+    // =========================================================================
+    .goal-one{   background-color: rgba(lighten($red, 3%), 0.75);}
+    .goal-two{   background-color: rgba(lighten($green, 3%), 0.75); }
+    .goal-three{ background-color: rgba(lighten($blue, 3%), 0.75); }
   }
 }
