@@ -46,6 +46,24 @@ define([
           end:   '2016-01-21',
           title: 'Another Long Event',
           goal:  'goal-three'
+        },
+        {
+          start: '2016-01-19',
+          end:   '2016-01-22',
+          title: 'Another Long Event',
+          goal:  'goal-four'
+        },
+        {
+          start: '2016-01-18',
+          end:   '2016-01-22',
+          title: 'Another Long Event',
+          goal:  'goal-five'
+        },
+        {
+          start: '2016-01-19',
+          end:   '2016-01-21',
+          title: 'Another Long Event',
+          goal:  'goal-six'
         }
       ];
 

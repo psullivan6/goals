@@ -10,8 +10,8 @@
     display: block;
     float: left;
     width: percentage(1 / 7);
-    margin: 0;
-    padding: ($gutter * 0.5) 0;
+    margin: ($gutter / 3) 0 ($gutter / 3) 0;
+    padding-bottom: ($gutter / 2);
     font-size: 16px;
     font-weight: bold;
     text-align: center;
@@ -32,43 +32,77 @@
     // =========================================================================
     // Goal Streak > Start - End styling
     // =========================================================================
+    // .goal{
+    //   z-index: -1;
+    //   overflow: hidden;
+    //   display: block;
+    //   position: absolute;
+    //   bottom: 0;
+    //   left: 50%;
+    //   width: $gutter * 1.5;
+    //   height: 8px;
+    //   margin-left: ($gutter * -0.5);
+    //   border-radius: $gutter;
+    //   text-indent: -300%;
+
+    //   &.streak-start,
+    //   &.streak-end{
+    //     width: calc(50% + #{$gutter * 0.5});
+    //   }
+    //   &.streak-start{ border-radius: $gutter 0 0 $gutter; }
+    //   &.streak-end{   border-radius: 0 $gutter $gutter 0; }
+
+    //   &.streak-end,
+    //   &.streak-surrounded{
+    //     left: 0;
+    //     margin-left: 0
+    //   }
+
+    //   &.streak-surrounded{
+    //     width: 100%;
+    //     border-radius: 0;
+    //   }
+    // }
+
+    .goals-container{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .goals{
+      display: inline-block;
+      width: auto;
+      margin: 0 auto;
+      @extend .clearfix;
+    }
+
     .goal{
       z-index: -1;
       overflow: hidden;
       display: block;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: $gutter * 1.5;
-      height: 8px;
-      margin-left: ($gutter * -0.5);
+      float: left;
+      position: relative;
+      width: 6px;
+      height: 6px;
+      margin: 0 4px 4px 0;
       border-radius: $gutter;
-      text-indent: -300%;
+      font-size: 1px;
+      text-indent: -1200%;
 
-      &.streak-start,
-      &.streak-end{
-        width: calc(50% + #{$gutter * 0.5});
-      }
-      &.streak-start{ border-radius: $gutter 0 0 $gutter; }
-      &.streak-end{   border-radius: 0 $gutter $gutter 0; }
-
-      &.streak-end,
-      &.streak-surrounded{
-        left: 0;
-        margin-left: 0
-      }
-
-      &.streak-surrounded{
-        width: 100%;
-        border-radius: 0;
-      }
+      &:last-child{ margin-right: 0; }
     }
 
     // =========================================================================
     // Goal Streak > Coloring
     // =========================================================================
-    .goal-one{   background-color: rgba(lighten($red, 3%), 0.75);}
-    .goal-two{   background-color: rgba(lighten($green, 3%), 0.75); }
-    .goal-three{ background-color: rgba(lighten($blue, 3%), 0.75); }
+    .goal-one{   background-color: lighten($red, 3%); }
+    .goal-two{   background-color: lighten($green, 3%); }
+    .goal-three{ background-color: #fc0; }
+    .goal-four{ background-color: lighten($blue, 3%); }
+    .goal-five{ background-color: lighten($gray, 3%); }
+    .goal-six{ background-color: lighten($blue, 6%); }
   }
 }
