@@ -11,6 +11,7 @@ $golden-ratio: 1.61803398875;
 // Fonts
 // #############################################################################
 $monospace: "Consolas", monospace;
+$system: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif; // <-- Courtesy https://medium.com/@mwichary/system-shock-6b1dc6d6596f
 
 
 // #############################################################################
@@ -22,6 +23,7 @@ $blue:  #3366ff;
 
 $gray: #ccc;
 $black: #000033; // this is a dark blue to be mainly used for typography
+$night: #1b1c1f;
 
 $color--selected-background: $red;
 $color--selected-text: white;

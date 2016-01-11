@@ -1,7 +1,7 @@
 define([
   'backbone',
-  '../views/_boilerplate/BoilerplateView'
-], function (Backbone, BoilerplateView){
+  '../views/calendar/CalendarView'
+], function (Backbone, CalendarView){
 
   var MainRouter = Backbone.Router.extend({
     routes: {
@@ -21,8 +21,8 @@ define([
     handleData: function (route, parameters) {
       var thisContext = this;
 
-      this.placeholderView = new BoilerplateView({ page: route });
-      this.placeholderView.render();
+      this.calendarView = new CalendarView({ page: route });
+      this.calendarView.render();
 
       console.log('DATA', route, parameters);
     }

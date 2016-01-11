@@ -1,0 +1,47 @@
+#calendar header.clndr-controls{
+  position: relative;
+  display: block;
+  width: 100%;
+  @extend .clearfix;
+  background-color: lighten($night, 6%);
+
+  // =========================================================================
+  // Previous + Next Buttons
+  // =========================================================================
+  button{
+    position: absolute;
+    top: 0;
+    width: $gutter * 2;
+    height: $gutter * 2;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    font-family: $monospace;
+    font-size: 24px;
+
+    &:hover{
+      background-color: rgba(black, 0.25);
+    }
+  }
+  .clndr-previous-button{
+    left: 0;
+  }
+  .clndr-next-button{
+    right: 0;
+  }
+
+  // =========================================================================
+  // Current Month Header
+  // =========================================================================
+  h1{
+    width: calc(100% - #{$gutter * 2});
+    margin: 0 auto;
+    padding: ($gutter / 2) 0;
+    font-size: 18px;
+    line-height: $gutter;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: white;
+  }
+
+}

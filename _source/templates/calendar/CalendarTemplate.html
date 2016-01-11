@@ -1,0 +1,32 @@
+<header class="clndr-controls">
+	<button class="clndr-previous-button">&lt;</button>
+	<h1 class="calendar-month"><%= month %></h1>
+	<button class="clndr-next-button">&gt;</button>
+</header>
+
+<section class="calendar-grid">
+	<header class="calendar-days-of-the-week">
+		<% for (var i = 0, collectionLength = daysOfTheWeek.length; i < collectionLength; i++) { %>
+			<h2><%= daysOfTheWeek[i] %></h2>
+    <% }; %>
+	</header>
+
+	<article class="days">
+		<% for (var i = 0, collectionLength = days.length; i < collectionLength; i++) { %>
+
+			<% if (days[i].classes.search('event') >= 0){
+				if ((days[i - 1].classes.search('event') >= 0) && (days[i + 1].classes.search('event') >= 0)) {
+					days[i].classes = days[i].classes.concat(' streak-surrounded');
+				} else if (days[i - 1].classes.search('event') >= 0){
+					days[i].classes = days[i].classes.concat(' streak-end');
+				} else if (days[i + 1].classes.search('event') >= 0){
+					days[i].classes = days[i].classes.concat(' streak-start');
+				} else {
+					days[i].classes = days[i].classes.concat(' streak-solo');
+				}
+			} %>
+
+			<p class="<%= days[i].classes %>"><%= days[i].day %></p>
+    <% }; %>
+	</article>
+</section>
