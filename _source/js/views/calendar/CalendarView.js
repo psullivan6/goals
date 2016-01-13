@@ -24,56 +24,22 @@ define([
 
       var streaks = [
         {
-          start: '2015-12-28',
-          end:   '2016-01-06',
-          title: 'Monday to Friday Event',
-          goal:  'goal-one'
+          date: '2016-01-19',
+          title: 'CLNDR GitHub Page Finished',
+          url: 'http://github.com/kylestetz/CLNDR',
+          goal: 'goal-one'
         },
         {
-          start: '2016-01-15',
-          end:   '2016-01-20',
-          title: 'Another Long Event',
-          goal:  'goal-two'
-        },
-        {
-          start: '2016-01-18',
-          end:   '2016-01-24',
-          title: 'Another Long Event',
-          goal:  'goal-one'
-        },
-        {
-          start: '2016-01-17',
-          end:   '2016-01-21',
-          title: 'Another Long Event',
-          goal:  'goal-three'
-        },
-        {
-          start: '2016-01-19',
-          end:   '2016-01-22',
-          title: 'Another Long Event',
-          goal:  'goal-four'
-        },
-        {
-          start: '2016-01-18',
-          end:   '2016-01-22',
-          title: 'Another Long Event',
-          goal:  'goal-five'
-        },
-        {
-          start: '2016-01-19',
-          end:   '2016-01-21',
-          title: 'Another Long Event',
-          goal:  'goal-six'
+          date: '2016-01-19',
+          title: '2 CLNDR GitHub Page Finished',
+          url: 'http://github.com/kylestetz/CLNDR',
+          goal: 'goal-two'
         }
       ];
 
       this.$el.clndr({
         template: CalendarTemplate,
         events: streaks,
-        multiDayEvents: {
-          endDate: 'end',
-          startDate: 'start'
-        },
         adjacentDaysChangeMonth: true,
         forceSixRows: true
       });
