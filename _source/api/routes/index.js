@@ -10,7 +10,7 @@ require('colors');
 // #############################################################################
 // CONNECT TO THE MONGO DATABASE
 // #############################################################################
-var DATABASE = process.env.MONGODB_URI || 'mongodb://localhost:27017/boilerplate'; // Heroku influenced variable
+var DATABASE = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/boilerplate'; // Heroku influenced variable
 
 mongoose.connect(DATABASE);
 

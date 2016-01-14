@@ -34,6 +34,12 @@ define([
           title: '2 CLNDR GitHub Page Finished',
           url: 'http://github.com/kylestetz/CLNDR',
           goal: 'goal-two'
+        },
+        {
+          date: '2016-01-19',
+          title: '2 CLNDR GitHub Page Finished',
+          url: 'http://github.com/kylestetz/CLNDR',
+          goal: 'goal-four'
         }
       ];
 

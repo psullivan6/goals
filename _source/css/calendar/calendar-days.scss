@@ -64,6 +64,9 @@
     //   }
     // }
 
+    $goal-dot-size: 6px;
+    $goal-max-row-count: 6;
+
     .goals-container{
       position: absolute;
       bottom: 0;
@@ -73,10 +76,14 @@
     }
 
     .goals{
-      display: inline-block;
+      display: block;
       width: auto;
       margin: 0 auto;
       @extend .clearfix;
+
+      @for $i from 1 through $goal-max-row-count {
+        &.goals-count-#{$i}{ width: ($goal-dot-size * $i) + (($goal-dot-size * (2 / 3)) * ($i - 1)) }
+      }
     }
 
     .goal{
@@ -85,9 +92,9 @@
       display: block;
       float: left;
       position: relative;
-      width: 6px;
-      height: 6px;
-      margin: 0 4px 4px 0;
+      width: $goal-dot-size;
+      height: $goal-dot-size;
+      margin-right: $goal-dot-size * (2 / 3);
       border-radius: $gutter;
       font-size: 1px;
       text-indent: -1200%;

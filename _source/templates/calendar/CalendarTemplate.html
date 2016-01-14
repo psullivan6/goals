@@ -28,9 +28,13 @@
 
 			<div class="<%= days[daysIterator].classes %>">
 				<span><%= days[daysIterator].day %></span>
-				<% for (var goalSlugIterator = 0, goalCollectionLength = days[daysIterator].events.length; goalSlugIterator < goalCollectionLength; goalSlugIterator++) { %>
-					<span class="goal <%= days[daysIterator].events[goalSlugIterator].goal %>"><%= days[daysIterator].events[goalSlugIterator].goal %></span>
-		    <% } %>
+				<section class="goals-container">
+					<article class="goals goals-count-<%= days[daysIterator].events.length %>">
+						<% for (var goalSlugIterator = 0, goalCollectionLength = days[daysIterator].events.length; goalSlugIterator < goalCollectionLength; goalSlugIterator++) { %>
+							<span class="goal <%= days[daysIterator].events[goalSlugIterator].goal %>"><%= days[daysIterator].events[goalSlugIterator].goal %></span>
+				    <% } %>
+			    </article>
+		    </section>
 			</div>
     <% } %>
 	</article>

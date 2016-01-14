@@ -1,4 +1,7 @@
-# boilerplate
+# Streeks
+A daily goals-based streak tracker.
+
+# Tech Stack
 Backbone JS | Mongo DB | Node JS | Express Stack
 
 # Repo Initialization
