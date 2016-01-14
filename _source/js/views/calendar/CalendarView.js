@@ -13,10 +13,27 @@ define([
 
     // It's the first function called when this view it's instantiated.
     initialize: function(){
-      _.bindAll(this, 'render');
+      _.bindAll(this, 'render', 'handleMonthChange');
+
+      this.currentMonthOffset = 0;
 
       // Call the initialize function of the extended BaseView
       BaseView.prototype.initialize.call(this);
+    },
+
+    handleMonthChange: function(options){
+      var month = options.month;
+      var monthOffset = options.currentOffset;
+
+      this.currentMonthOffset += monthOffset;
+
+      if (this.currentMonthOffset === 0) {
+        console.log('CURRENT MONTH');
+      } else if (this.currentMonthOffset > 0){
+        console.log('NEXT MONTHS');
+      } else {
+        console.log('PREVIOUS MONTHS');
+      }
     },
 
     render: function(){
@@ -47,7 +64,15 @@ define([
         template: CalendarTemplate,
         events: streaks,
         adjacentDaysChangeMonth: true,
-        forceSixRows: true
+        forceSixRows: true,
+        clickEvents: {
+          nextMonth: function(month){
+            thisContext.handleMonthChange({ month: month, currentOffset: 1 });
+          },
+          previousMonth: function(month){
+            thisContext.handleMonthChange({ month: month, currentOffset: -1 });
+          },
+        }
       });
     },
   });

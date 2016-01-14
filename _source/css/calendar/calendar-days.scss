@@ -29,6 +29,9 @@
     &.last-month{ color: rgba(white, 0.15); }
     &.next-month{ color: rgba(white, 0.3); }
 
+    &.last-month:hover{ cursor: w-resize; }
+    &.next-month:hover{ cursor: e-resize; }
+
     // =========================================================================
     // Goal Streak > Start - End styling
     // =========================================================================
