@@ -60,6 +60,49 @@ define([
         }
       ];
 
+
+
+
+
+      // New Data format, try this out:
+      this.events = [
+        {
+          date: '2016-01-22',
+          streak_name: 'No Beer',
+          streak_slug: 'no-beer',
+          streak_class: 'streak-start'
+        },
+        {
+          date: '2016-01-23',
+          streak_name: 'No Beer',
+          streak_slug: 'no-beer',
+          streak_class: 'streak-middle'
+        },
+        {
+          date: '2016-01-24',
+          streak_name: 'No Beer',
+          streak_slug: 'no-beer',
+          streak_class: 'streak-middle'
+        },
+        {
+          date: '2016-01-25',
+          streak_name: 'No Beer',
+          streak_slug: 'no-beer',
+          streak_class: 'streak-end'
+        },
+        {
+          date: '2016-01-28',
+          streak_name: 'No Beer',
+          streak_slug: 'no-beer',
+          streak_class: 'streak-solo'
+        }
+      ];
+
+
+
+
+
+
       this.$el.clndr({
         template: CalendarTemplate,
         events: streaks,

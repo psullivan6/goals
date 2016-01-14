@@ -1,45 +1,45 @@
 <header class="clndr-controls">
-	<button class="clndr-previous-button">
-		<span>&lt;</span>
-	</button>
-	<h1 class="calendar-month"><%= month %></h1>
-	<button class="clndr-next-button">
-		<span>&gt;</span>
-	</button>
+  <button class="clndr-previous-button">
+    <span>&lt;</span>
+  </button>
+  <h1 class="calendar-month"><%= month %></h1>
+  <button class="clndr-next-button">
+    <span>&gt;</span>
+  </button>
 </header>
 
 <section class="calendar-grid">
-	<header class="calendar-days-of-the-week">
-		<% for (var i = 0, collectionLength = daysOfTheWeek.length; i < collectionLength; i++) { %>
-			<h2><%= daysOfTheWeek[i] %></h2>
+  <header class="calendar-days-of-the-week">
+    <% for (var i = 0, collectionLength = daysOfTheWeek.length; i < collectionLength; i++) { %>
+      <h2><%= daysOfTheWeek[i] %></h2>
     <% } %>
-	</header>
+  </header>
 
-	<article class="days">
-		<% for (var daysIterator = 0, collectionLength = days.length; daysIterator < collectionLength; daysIterator++) {
+  <article class="days">
+    <% for (var daysIterator = 0, collectionLength = days.length; daysIterator < collectionLength; daysIterator++) {
 
-			if (days[daysIterator].classes.search('event') >= 0){
-				if ((days[daysIterator - 1].classes.search('event') >= 0) && (days[daysIterator + 1].classes.search('event') >= 0)) {
-					days[daysIterator].classes = days[daysIterator].classes.concat(' streak-surrounded');
-				} else if (days[daysIterator - 1].classes.search('event') >= 0){
-					days[daysIterator].classes = days[daysIterator].classes.concat(' streak-end');
-				} else if (days[daysIterator + 1].classes.search('event') >= 0){
-					days[daysIterator].classes = days[daysIterator].classes.concat(' streak-start');
-				} else {
-					days[daysIterator].classes = days[daysIterator].classes.concat(' streak-solo');
-				}
-			} %>
+      if (days[daysIterator].classes.search('event') >= 0){
+        if ((days[daysIterator - 1].classes.search('event') >= 0) && (days[daysIterator + 1].classes.search('event') >= 0)) {
+          days[daysIterator].classes = days[daysIterator].classes.concat(' streak-surrounded');
+        } else if (days[daysIterator - 1].classes.search('event') >= 0){
+          days[daysIterator].classes = days[daysIterator].classes.concat(' streak-end');
+        } else if (days[daysIterator + 1].classes.search('event') >= 0){
+          days[daysIterator].classes = days[daysIterator].classes.concat(' streak-start');
+        } else {
+          days[daysIterator].classes = days[daysIterator].classes.concat(' streak-solo');
+        }
+      } %>
 
-			<div class="<%= days[daysIterator].classes %>">
-				<span><%= days[daysIterator].day %></span>
-				<section class="goals-container">
-					<article class="goals goals-count-<%= days[daysIterator].events.length %>">
-						<% for (var goalSlugIterator = 0, goalCollectionLength = days[daysIterator].events.length; goalSlugIterator < goalCollectionLength; goalSlugIterator++) { %>
-							<span class="goal <%= days[daysIterator].events[goalSlugIterator].goal %>"><%= days[daysIterator].events[goalSlugIterator].goal %></span>
-				    <% } %>
-			    </article>
-		    </section>
-			</div>
+      <div class="<%= days[daysIterator].classes %>">
+        <span><%= days[daysIterator].day %></span>
+        <section class="goals-container">
+          <article class="goals goals-count-<%= days[daysIterator].events.length %>">
+            <% for (var goalSlugIterator = 0, goalCollectionLength = days[daysIterator].events.length; goalSlugIterator < goalCollectionLength; goalSlugIterator++) { %>
+              <span class="goal <%= days[daysIterator].events[goalSlugIterator].goal %>"><%= days[daysIterator].events[goalSlugIterator].goal %></span>
+            <% } %>
+          </article>
+        </section>
+      </div>
     <% } %>
-	</article>
+  </article>
 </section>
