@@ -13,7 +13,7 @@ define([
 
     // It's the first function called when this view it's instantiated.
     initialize: function(){
-      _.bindAll(this, 'render', 'handleMonthChange');
+      _.bindAll(this, 'render', 'handleMonthChange', 'renderCalendar');
 
       this.currentMonthOffset = 0;
 
@@ -36,76 +36,12 @@ define([
       }
     },
 
-    render: function(){
+    renderCalendar: function(){
       var thisContext = this;
-
-      var streaks = [
-        {
-          date: '2016-01-19',
-          title: 'CLNDR GitHub Page Finished',
-          url: 'http://github.com/kylestetz/CLNDR',
-          goal: 'goal-one'
-        },
-        {
-          date: '2016-01-19',
-          title: '2 CLNDR GitHub Page Finished',
-          url: 'http://github.com/kylestetz/CLNDR',
-          goal: 'goal-two'
-        },
-        {
-          date: '2016-01-19',
-          title: '2 CLNDR GitHub Page Finished',
-          url: 'http://github.com/kylestetz/CLNDR',
-          goal: 'goal-four'
-        }
-      ];
-
-
-
-
-
-      // New Data format, try this out:
-      this.events = [
-        {
-          date: '2016-01-22',
-          streak_name: 'No Beer',
-          streak_slug: 'no-beer',
-          streak_class: 'streak-start'
-        },
-        {
-          date: '2016-01-23',
-          streak_name: 'No Beer',
-          streak_slug: 'no-beer',
-          streak_class: 'streak-middle'
-        },
-        {
-          date: '2016-01-24',
-          streak_name: 'No Beer',
-          streak_slug: 'no-beer',
-          streak_class: 'streak-middle'
-        },
-        {
-          date: '2016-01-25',
-          streak_name: 'No Beer',
-          streak_slug: 'no-beer',
-          streak_class: 'streak-end'
-        },
-        {
-          date: '2016-01-28',
-          streak_name: 'No Beer',
-          streak_slug: 'no-beer',
-          streak_class: 'streak-solo'
-        }
-      ];
-
-
-
-
-
 
       this.$el.clndr({
         template: CalendarTemplate,
-        events: streaks,
+        events: thisContext.events,
         adjacentDaysChangeMonth: true,
         forceSixRows: true,
         clickEvents: {
@@ -117,6 +53,51 @@ define([
           },
         }
       });
+    },
+
+    render: function(){
+      var thisContext = this;
+
+      // New Data format, try this out:
+      this.events = [
+        {
+          date: '2016-01-22',
+          streak_name: 'No Beer',
+          streak_slug: 'no-beer',
+          streak_class: 'streak-start',
+          streak_color: '#f03'
+        },
+        {
+          date: '2016-01-23',
+          streak_name: 'No Beer',
+          streak_slug: 'no-beer',
+          streak_class: 'streak-middle',
+          streak_color: '#f03'
+        },
+        {
+          date: '2016-01-24',
+          streak_name: 'No Beer',
+          streak_slug: 'no-beer',
+          streak_class: 'streak-middle',
+          streak_color: '#f03'
+        },
+        {
+          date: '2016-01-25',
+          streak_name: 'No Beer',
+          streak_slug: 'no-beer',
+          streak_class: 'streak-end',
+          streak_color: '#f03'
+        },
+        {
+          date: '2016-01-28',
+          streak_name: 'Excercise',
+          streak_slug: 'excercise',
+          streak_class: 'streak-solo',
+          streak_color: '#36f'
+        }
+      ];
+
+      this.renderCalendar();
     },
   });
 

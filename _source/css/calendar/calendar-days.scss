@@ -104,15 +104,5 @@
 
       &:last-child{ margin-right: 0; }
     }
-
-    // =========================================================================
-    // Goal Streak > Coloring
-    // =========================================================================
-    .goal-one{   background-color: lighten($red, 3%); }
-    .goal-two{   background-color: lighten($green, 3%); }
-    .goal-three{ background-color: #fc0; }
-    .goal-four{ background-color: lighten($blue, 3%); }
-    .goal-five{ background-color: lighten($gray, 3%); }
-    .goal-six{ background-color: lighten($blue, 6%); }
   }
 }
