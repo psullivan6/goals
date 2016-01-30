@@ -5,7 +5,7 @@ define([
 ], function($, _, Backbone){
 
   var BaseView = Backbone.View.extend({
-    
+
     initialize: function(){
       var thisContext = this;
 
@@ -53,6 +53,11 @@ define([
       while(this.subViews.length > 0){
         this.cleanup(this.subViews[0]);
       }
+    },
+
+    assign: function (view, selector) {
+      view.setElement(this.$(selector)).render();
+      this.addSubView(view);
     },
 
     addBodyClass: function(className){

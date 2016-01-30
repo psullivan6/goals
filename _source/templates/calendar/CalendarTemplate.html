@@ -20,13 +20,13 @@
 
       if (days[daysIterator].classes.search('event') >= 0){
         if ((days[daysIterator - 1].classes.search('event') >= 0) && (days[daysIterator + 1].classes.search('event') >= 0)) {
-          days[daysIterator].classes = days[daysIterator].classes.concat(' streak-surrounded');
+          days[daysIterator].classes = days[daysIterator].classes.concat(' streek-surrounded');
         } else if (days[daysIterator - 1].classes.search('event') >= 0){
-          days[daysIterator].classes = days[daysIterator].classes.concat(' streak-end');
+          days[daysIterator].classes = days[daysIterator].classes.concat(' streek-end');
         } else if (days[daysIterator + 1].classes.search('event') >= 0){
-          days[daysIterator].classes = days[daysIterator].classes.concat(' streak-start');
+          days[daysIterator].classes = days[daysIterator].classes.concat(' streek-start');
         } else {
-          days[daysIterator].classes = days[daysIterator].classes.concat(' streak-solo');
+          days[daysIterator].classes = days[daysIterator].classes.concat(' streek-solo');
         }
       } %>
 
@@ -35,7 +35,7 @@
         <section class="goals-container">
           <article class="goals goals-count-<%= days[daysIterator].events.length %>">
             <% for (var goalSlugIterator = 0, goalCollectionLength = days[daysIterator].events.length; goalSlugIterator < goalCollectionLength; goalSlugIterator++) { %>
-              <span class="goal <%= days[daysIterator].events[goalSlugIterator].streak_class %>" style="background-color: <%= days[daysIterator].events[goalSlugIterator].streak_color %>;"><%= days[daysIterator].events[goalSlugIterator].streak_class %></span>
+              <span class="goal <%= days[daysIterator].events[goalSlugIterator].class %>" style="background-color: <%= days[daysIterator].events[goalSlugIterator].color %>;"><%= days[daysIterator].events[goalSlugIterator].class %></span>
             <% } %>
           </article>
         </section>

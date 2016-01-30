@@ -16,6 +16,7 @@ define([
       _.bindAll(this, 'render', 'handleMonthChange', 'renderCalendar');
 
       this.currentMonthOffset = 0;
+      this.events = [];
 
       // Call the initialize function of the extended BaseView
       BaseView.prototype.initialize.call(this);
@@ -55,48 +56,25 @@ define([
       });
     },
 
+    handleStreekData: function(){
+      for (var i = 0, collectionLength = this.collection.models.length; i < collectionLength; i++) {
+        streekModel = this.collection.models[i];
+        this.handleEventData(streekModel.get('events'));
+      }
+    },
+
+    handleEventData: function(eventsCollection){
+      for (var i = 0, collectionLength = eventsCollection.models.length; i < collectionLength; i++) {
+        eventModel = eventsCollection.models[i];
+        this.events.push(eventModel.attributes);
+      }
+    },
+
     render: function(){
       var thisContext = this;
 
-      // New Data format, try this out:
-      this.events = [
-        {
-          date: '2016-01-22',
-          streak_name: 'No Beer',
-          streak_slug: 'no-beer',
-          streak_class: 'streak-start',
-          streak_color: '#f03'
-        },
-        {
-          date: '2016-01-23',
-          streak_name: 'No Beer',
-          streak_slug: 'no-beer',
-          streak_class: 'streak-middle',
-          streak_color: '#f03'
-        },
-        {
-          date: '2016-01-24',
-          streak_name: 'No Beer',
-          streak_slug: 'no-beer',
-          streak_class: 'streak-middle',
-          streak_color: '#f03'
-        },
-        {
-          date: '2016-01-25',
-          streak_name: 'No Beer',
-          streak_slug: 'no-beer',
-          streak_class: 'streak-end',
-          streak_color: '#f03'
-        },
-        {
-          date: '2016-01-28',
-          streak_name: 'Excercise',
-          streak_slug: 'excercise',
-          streak_class: 'streak-solo',
-          streak_color: '#36f'
-        }
-      ];
-
+      // [TODO] DO the event aggregation on the server
+      this.handleStreekData();
       this.renderCalendar();
     },
   });

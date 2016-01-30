@@ -1,7 +1,12 @@
 define([
   'backbone',
-  '../views/calendar/CalendarView'
-], function (Backbone, CalendarView){
+  '../collections/StreeksCollection',
+  '../views/calendar/CalendarView',
+  '../views/list/StreekListView'
+], function (Backbone,
+             StreeksCollection,
+             CalendarView,
+             StreekListView){
 
   var MainRouter = Backbone.Router.extend({
     routes: {
@@ -21,10 +26,23 @@ define([
     handleData: function (route, parameters) {
       var thisContext = this;
 
-      this.calendarView = new CalendarView({ page: route });
-      this.calendarView.render();
+      this.streeksCollection = new StreeksCollection();
+      this.streeksCollection.fetch({ success: function(collection){
+        thisContext.setCalendarView(collection);
+        thisContext.setStreeksView(collection);
+      }});
+    },
 
-      console.log('DATA', route, parameters);
+    setCalendarView: function(streeksCollection){
+      this.calendarView = new CalendarView({ collection: streeksCollection});
+      this.calendarView.render();
+    },
+
+    setStreeksView: function(streeksCollection){
+      this.streekListView = new StreekListView({
+        collection: streeksCollection
+      });
+      this.streekListView.render();
     }
   });
 
