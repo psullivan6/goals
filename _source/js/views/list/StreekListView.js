@@ -9,7 +9,7 @@ define([
             StreekListTemplate){
 
   var StreekListView = BaseView.extend({
-    el: '#streekList',
+    el: '#streekListSection',
 
     // It's the first function called when this view it's instantiated.
     initialize: function(){
@@ -39,7 +39,8 @@ define([
 
       // render the sub view and append it to this parent view's DOM element
       streekListItemView.render();
-      this.$el.append(streekListItemView.el);
+
+      this.$('#streekList').append(streekListItemView.el);
     },
 
     render: function(){

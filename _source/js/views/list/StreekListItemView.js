@@ -7,6 +7,8 @@ define([
             StreekListItemTemplate){
 
   var StreekListItemView = BaseView.extend({
+    tagName: 'li',
+    className: 'streek-listItem clearfix',
 
     // It's the first function called when this view it's instantiated.
     initialize: function(){
@@ -18,8 +20,13 @@ define([
     },
 
     render: function(){
-      var thisContext = this;
-      this.$el.html(thisContext.template());
+      var streekCount = this.commafiedNumber(this.model.get('count'));
+
+      this.$el.html(this.template({
+        color: this.model.get('color'),
+        count: streekCount,
+        name: this.model.get('name')
+      }));
     },
   });
 

@@ -2,7 +2,8 @@
   {
     "name": "No Beer",
     "slug": "no-beer",
-    "color": "#ff0033",
+    "color": "#09f",
+    "count": 125,
     "events": [
       {
         "date": "2016-01-29",
@@ -25,7 +26,8 @@
   {
     "name": "Excercise",
     "slug": "excercise",
-    "color": "#33ff66",
+    "color": "#3f9",
+    "count": 201,
     "events": [
       {
         "date": "2016-01-31",
@@ -41,6 +43,34 @@
       },
       {
         "date": "2016-02-03",
+        "class": "streek-end"
+      }
+    ]
+  },
+  {
+    "name": "8 Glasses of Water",
+    "slug": "8-glasses-of-water",
+    "color": "#f36",
+    "count": 56,
+    "events": [
+      {
+        "date": "2016-02-01",
+        "class": "streek-start"
+      },
+      {
+        "date": "2016-02-02",
+        "class": "streek-middle"
+      },
+      {
+        "date": "2016-02-03",
+        "class": "streek-middle"
+      },
+      {
+        "date": "2016-02-04",
+        "class": "streek-middle"
+      },
+      {
+        "date": "2016-02-05",
         "class": "streek-end"
       }
     ]

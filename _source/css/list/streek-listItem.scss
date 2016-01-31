@@ -1,0 +1,18 @@
+#streekList li{
+  padding: $gutter / 2;
+  border-bottom: 1px solid rgba(black, 0.36);
+
+  h1{
+    display: block;
+    float: left;
+    line-height: 20px;
+  }
+
+  h2{
+    float: right;
+    margin: 0;
+    font-family: $monospace;
+    font-size: 20px;
+    line-height: 20px;
+  }
+}

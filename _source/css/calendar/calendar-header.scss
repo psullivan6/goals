@@ -62,11 +62,7 @@
     width: calc(100% - #{$gutter * 2});
     margin: 0 auto;
     padding: ($gutter / 2) 0;
-    font-size: $gutter / 2;
-    line-height: $gutter / 2;
     text-align: center;
-    letter-spacing: 0.05em;
-    color: white;
   }
 
 }

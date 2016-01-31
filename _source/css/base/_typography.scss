@@ -1,0 +1,11 @@
+body{
+  font-family: $system;
+}
+
+.headline{
+  font-size: $gutter / 2;
+  font-weight: 600;
+  line-height: $gutter / 2;
+  letter-spacing: 0.05em;
+  color: white;
+}
