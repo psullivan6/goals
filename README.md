@@ -32,3 +32,10 @@ MongoDB database served by heroku add-on: MongoLab. Thus, MongoDB must be instal
 ## Local connection:
 
 Run `mongod --dbpath ./_source/api/data/db` to set the mongo db directory to the correct local location and start the connection.
+
+---
+
+# Errors
+
+**Error:** `Uncaught SyntaxError: Unexpected token <` in `main.js`:
+**Reasoning:** `main.js` is not being referenced correctly in relation to the location of `index.html`

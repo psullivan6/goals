@@ -36,7 +36,7 @@ var BoilerplateItemModel = require('../../api/models/BoilerplateItemModel');
 
 // middleware to use for all requests
 router.use(function (request, response, next) {
-  console.log(request.method, request.url);
+  console.log(request.method.magenta, request.url);
   next(); // make sure we go to the next routes and don't stop here
 });
 

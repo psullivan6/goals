@@ -1,0 +1,26 @@
+.colors{
+  width: 480px;
+  margin: 0 auto;
+  @extend .clearfix;
+
+  .color{
+    position: relative;
+    float: left;
+    width: $gutter * 2;
+    height: $gutter * 2;
+    margin: 10px;
+    font-family: $monospace;
+    font-size: 10px;
+    line-height: 15px;
+    color: black;
+    text-align: center;
+
+    span{
+      display: block;
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      right: 0;
+    }
+  }
+}

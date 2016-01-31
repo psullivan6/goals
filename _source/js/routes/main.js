@@ -2,11 +2,13 @@ define([
   'backbone',
   '../collections/StreeksCollection',
   '../views/calendar/CalendarView',
-  '../views/list/StreekListView'
+  '../views/list/StreekListView',
+  '../views/styleguide/StyleguideView'
 ], function (Backbone,
              StreeksCollection,
              CalendarView,
-             StreekListView){
+             StreekListView,
+             StyleguideView){
 
   var MainRouter = Backbone.Router.extend({
     routes: {
@@ -26,6 +28,14 @@ define([
     handleData: function (route, parameters) {
       var thisContext = this;
 
+      if (route === null) {
+        this.routeDefault();
+      } else if (route === 'styleguide'){
+        this.routeStyleguide();
+      }
+    },
+
+    routeDefault: function(){
       this.streeksCollection = new StreeksCollection();
       this.streeksCollection.fetch({ success: function(collection){
         thisContext.setCalendarView(collection);
@@ -43,6 +53,12 @@ define([
         collection: streeksCollection
       });
       this.streekListView.render();
+    },
+
+    routeStyleguide: function(){
+      this.styleguideView = new StyleguideView();
+      this.styleguideView.render();
+      console.log('styleguide route');
     }
   });
 

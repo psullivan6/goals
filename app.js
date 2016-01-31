@@ -14,8 +14,6 @@ app.use(bodyParser.json());
 var PORT = process.env.PORT || '8000';
 var ENVIRONMENT = (process.env.ENVIRONMENT === 'release') ? 'release' : '_source';
 
-// Homepage
-app.use('/', express.static(ENVIRONMENT));
 
 // Static CSS & font assets delivery (always deliver built version)
 app.use('/css', express.static(ENVIRONMENT + '/css'));
@@ -24,6 +22,12 @@ app.use('/fonts', express.static(ENVIRONMENT + '/fonts'));
 // API Routes
 app.use('/api', require('./' + ENVIRONMENT + '/api/routes'));
 
+// Handle Backbone routing via re-protocol-ing helper
+app.use('/', express.static(ENVIRONMENT));
+app.use(function(request, response) {
+  var backboneFormattedURL = request.protocol + '://' + request.get('Host') + '/#' + request.url;
+  return response.redirect(backboneFormattedURL);
+});
 
 // =============================================================================
 // START THE SERVER
