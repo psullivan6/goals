@@ -33,7 +33,24 @@ define([
 
         if (i % 6 === 0) {
           if (i !== 0) {
-            this.getHexValue('000021');
+
+            if (i % 36 === 0) {
+              if (i % 216 === 0) {
+                if (i % 1296 === 0) {
+                  if (i % 7776 === 0) {
+                    this.getHexValue('200001');
+                  } else {
+                    this.getHexValue('020001');
+                  }
+                } else {
+                  this.getHexValue('002001');
+                }
+              } else {
+                this.getHexValue('000201');
+              }
+            } else {
+              this.getHexValue('000021');
+            }
           }
         } else {
           this.getHexValue('000003');
@@ -46,62 +63,8 @@ define([
     render: function(){
       var thisContext = this;
 
-      // [TODO] Do this recursively in a function
-      this.loopHexData(36);
-      this.colorValue = '000300';
-      this.loopHexData(36);
-      this.colorValue = '000600';
-      this.loopHexData(36);
-      this.colorValue = '000900';
-      this.loopHexData(36);
-      this.colorValue = '000c00';
-      this.loopHexData(36);
-      this.colorValue = '000f00';
-      this.loopHexData(36);
-
-      this.colorValue = '003000';
-      this.loopHexData(36);
-      this.colorValue = '006000';
-      this.loopHexData(36);
-      this.colorValue = '009000';
-      this.loopHexData(36);
-      this.colorValue = '00c000';
-      this.loopHexData(36);
-      this.colorValue = '00f000';
-      this.loopHexData(36);
-
-      this.colorValue = '003300';
-      this.loopHexData(36);
-      this.colorValue = '006300';
-      this.loopHexData(36);
-      this.colorValue = '009300';
-      this.loopHexData(36);
-      this.colorValue = '00c300';
-      this.loopHexData(36);
-      this.colorValue = '00f300';
-      this.loopHexData(36);
-
-      this.colorValue = '030000';
-      this.loopHexData(36);
-      this.colorValue = '060000';
-      this.loopHexData(36);
-      this.colorValue = '090000';
-      this.loopHexData(36);
-      this.colorValue = '0c0000';
-      this.loopHexData(36);
-      this.colorValue = '0f0000';
-      this.loopHexData(36);
-
-      this.colorValue = '300000';
-      this.loopHexData(36);
-      this.colorValue = '600000';
-      this.loopHexData(36);
-      this.colorValue = '900000';
-      this.loopHexData(36);
-      this.colorValue = 'c00000';
-      this.loopHexData(36);
-      this.colorValue = 'f00000';
-      this.loopHexData(36);
+      this.loopHexData(46656);
+      // this.loopHexData(108);
 
       this.$el.html(thisContext.template({ colorList: this.colorList}));
     },
