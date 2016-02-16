@@ -39,3 +39,7 @@ Run `mongod --dbpath ./_source/api/data/db` to set the mongo db directory to the
 
 **Error:** `Uncaught SyntaxError: Unexpected token <` in `main.js`:
 **Reasoning:** `main.js` is not being referenced correctly in relation to the location of `index.html`
+
+**Cause:** While running the server and performing POST requests via POSTMAN
+**Error:** `SyntaxError: Unexpected token -`
+**Reasoning:** The `POST` request is not being made with the `Content-Type:application/json` Header OR an empty request body

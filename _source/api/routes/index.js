@@ -43,6 +43,11 @@ var slugify = function(text){
     .replace(/-+$/, '');
 }
 
+var handleError = function(error, response){
+  console.log('ERROR', error);
+  response.status(501).send('ERROR');
+};
+
 
 // #############################################################################
 // API ROUTES
@@ -60,10 +65,8 @@ router.route('/streeks')
 
     StreekModel.find({}).sort({created: -1}).exec(function (error, streeks) {
       if (error) {
-        console.error('ERROR', error);
-        response.status(501).send('ERROR');
+        handleError(error);
       } else {
-        console.log('streeks', streeks);
         response.status(200).json(streeks);
       }
     });
@@ -78,10 +81,11 @@ router.route('/streek')
     streekModel.slug = (typeof data.slug !== 'undefined') ? data.slug : slugify(data.name);
     streekModel.color = data.color;
 
-    streekModel.save(function (error) {
+    streekModel.save(function (error, streekModel) {
       if (error) {
-        response.status(501).send('ERROR', error);
+        handleError(error);
       } else {
+        console.log('SUCCESS'.brightGreen, 'Streek', streekModel._id, 'was created');
         response.status(200).json(streekModel);
       }
     });
@@ -91,13 +95,11 @@ router.route('/streek/:id')
   .get(function(request, response){
     var streekID = request.params.id;
 
-    StreekModel.find({ _id: streekID }).exec(function (error, streek) {
+    StreekModel.findById(streekID).populate('events').exec(function (error, streekModel) {
       if (error) {
-        console.error('ERROR', error);
-        response.status(501).send('ERROR');
+        handleError(error);
       } else {
-        console.log('streeks', streek);
-        response.status(200).json(streek);
+        response.status(200).json(streekModel);
       }
     });
   })
@@ -105,18 +107,31 @@ router.route('/streek/:id')
     var streekID = request.params.id;
     var streekEventData = request.body;
 
-    StreekModel.find({ _id: streekID }).exec(function (error, streek) {
+    StreekModel.findById(streekID, function (error, streekModel) {
       if (error) {
-        console.error('ERROR', error);
-        response.status(501).send('ERROR');
+        handleError(error);
       } else {
-        console.log('streeks', streek);
-
         var streekEventModel = new StreekEventModel();
 
-        streekEventModel.
+        streekEventModel.date = streekEventData.date;
+        streekEventModel.class = streekEventData.class; // This should be set via the db find and sort
 
-        response.status(200).json(streek);
+        streekEventModel.save(function(error, streekEventModel){
+          if (error) {
+            handleError(error);
+          } else {
+            console.log('FULL EVENT MODEL', streekEventModel);
+            streekModel.events.push(streekEventModel._id);
+
+            streekModel.save(function(error, streekModel){
+              if (error) {
+                handleError(error);
+              } else {
+                response.status(200).json(streekModel);
+              }
+            });
+          }
+        });
       }
     });
   });
