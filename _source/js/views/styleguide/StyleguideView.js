@@ -63,8 +63,8 @@ define([
     render: function(){
       var thisContext = this;
 
-      this.loopHexData(46656);
-      // this.loopHexData(108);
+      // this.loopHexData(46656);
+      this.loopHexData(12);
 
       this.$el.html(thisContext.template({ colorList: this.colorList}));
     },

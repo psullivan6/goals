@@ -1,20 +1,31 @@
 .colors{
+  position: relative;
   margin: 0 auto;
   @extend .clearfix;
+
+  .grayBG{
+    z-index: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background-color: #333;
+  }
 
   @media screen and (max-width: 1500px){
     max-width: 480px;
   }
 
   .color{
+    z-index: 1;
     box-sizing: border-box;
     position: relative;
     float: left;
     width: percentage(1 / 36);
     height: 0;
-    margin: 10px 0;
+    margin: 10px 1px;
     padding-bottom: percentage(1 / 36);
-    border: 1px solid white;
     font-family: $monospace;
     font-size: 10px;
     line-height: 15px;

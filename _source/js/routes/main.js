@@ -36,6 +36,8 @@ define([
     },
 
     routeDefault: function(){
+      var thisContext = this;
+
       this.streeksCollection = new StreeksCollection();
       this.streeksCollection.fetch({ success: function(collection){
         thisContext.setCalendarView(collection);
